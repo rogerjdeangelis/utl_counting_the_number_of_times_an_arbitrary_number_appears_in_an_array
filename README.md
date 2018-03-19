@@ -1,6 +1,9 @@
 # utl_counting_the_number_of_times_an_arbitrary_number_appears_in_an_array
 Counting the number of times an arbitrary number appears in an array. Keywords: sas sql join merge big data analytics macros oracle teradata mysql sas communities stackoverflow statistics artificial inteligence AI Python R Java Javascript WPS Matlab SPSS Scala Perl C C# Excel MS Access JSON graphics maps NLP natural language processing machine learning igraph DOSUBL DOW loop stackoverflow SAS community.
     Counting the number of times an arbitrary number appears in an array
+    
+    sdd solution on end
+    Bartosz Jabłoński <yabwon@gmail.com>
 
     github
     https://tinyurl.com/ydzb7oqk
