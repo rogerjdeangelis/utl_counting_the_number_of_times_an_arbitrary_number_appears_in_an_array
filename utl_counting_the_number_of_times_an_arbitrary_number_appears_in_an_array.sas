@@ -1,5 +1,8 @@
 Counting the number of times an arbitrary number appears in an array
 
+added solution on end
+Bartosz Jabłoński <yabwon@gmail.com>
+
 github
 https://tinyurl.com/ydzb7oqk
 https://github.com/rogerjdeangelis/utl_counting_the_number_of_times_an_arbitrary_number_appears_in_an_array
@@ -88,6 +91,83 @@ endsubmit;
 run;quit;
 ');
 
+
+Bartosz Jabłoński <yabwon@gmail.com>
+5:46 PM (15 hours ago)
+to me 
+Hi Sir,
+
+I've just read your post and (since it inspired me a lot) I dare to show you my solution (which combines DoW-loop and Hash tables). I hope you enjoy it :-)
+
+regards
+Bart
+
+
+/* data */
+data have;
+input ID NAME $ :1. VAR $ :1.;
+cards;
+1 a x
+1 a y
+1 b y
+1 c x
+1 c y
+1 d z
+2 e x
+2 e y
+2 f x
+2 f z
+2 g z
+;
+run;
+
+
+/* solution */
+
+data want;
+put "###";
+
+declare hash V(suminc: "counter");
+V.DefineKey("VAR");
+V.DefineDone();
+declare hiter IV("V");
+
+declare hash N();
+N.DefineKey("NAME");
+N.DefineDone();
+
+counter = 1;
+do until(last.ID);
+    set have;
+    by ID;
+    
+    rc_V = V.REF(); /*populate hashtables*/
+    rc_N = N.REF();
+
+    put (ID NAME VAR) (=);
+
+    if last.ID then 
+    do; /* when in last record in group */
+        put "@@@"; 
+        totalitems = N.NUM_ITEMS; /* get total number of different names */
+        put totalitems=;
+        
+        /**/
+        rc_IV = IV.FIRST();
+        do until(rc_IV); /* iterate through VAR's values and calculate ratio */
+            rc_V  = V.sum(sum: total);
+
+            RATIO = total / totalitems;
+            put  ID= VAR= RATIO= best32.;
+            keep ID  VAR  RATIO;
+            output;
+            rc_IV = IV.NEXT();
+        end;
+        /**/
+    end;
+end;
+put "***";
+run;
 
 
 
